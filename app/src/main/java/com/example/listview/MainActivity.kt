@@ -12,15 +12,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val listView = findViewById<ListView>(R.id.listView)
-        val season = arrayOf("Spring", "Summer", "Fall", "Winter")
-        val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
-            this, android.R.layout.simple_list_item_1, season
-        )
+        //val season = arrayOf("Spring", "Summer", "Fall", "Winter")
+        var list = ArrayList<Model>()
 
-        listView.adapter = arrayAdapter
+        list.add(Model("Enok", "Dragon", R.drawable.ic_launcher_background))
 
-        listView.setOnItemClickListener{ adapterView, view, i, l ->
-            Toast.makeText(this, season[i] + " is the best season",Toast.LENGTH_LONG).show()
-        }
+        listView.adapter = MyCustomAdapter(this, R.layout.custome_item_layout, list)
+
+//        listView.setOnItemClickListener{ adapterView, view, i, l ->
+//            Toast.makeText(this, season[i] + " is the best season",Toast.LENGTH_LONG).show()
+//        }
+
     }
 }
